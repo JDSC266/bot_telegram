@@ -651,6 +651,11 @@ def detener_bot(sig, frame):
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, detener_bot)
     signal.signal(signal.SIGTERM, detener_bot)
+    # Instalar ffmpeg si no está disponible (Railway puede no tenerlo en PATH)
+    if subprocess.run(["which", "ffmpeg"], capture_output=True).returncode != 0:
+        print("📦 ffmpeg no encontrado, instalando...")
+        subprocess.run(["apt-get", "install", "-y", "ffmpeg"], check=True)
+        print("✅ ffmpeg instalado correctamente.")
     time.sleep(10)  # Evita conflicto 409 en redeploys (espera a que la instancia anterior muera)
     print("🤖 Bot iniciado correctamente.")
     while True:
