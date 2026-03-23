@@ -655,12 +655,15 @@ if __name__ == "__main__":
     if subprocess.run(["which", "ffmpeg"], capture_output=True).returncode != 0:
         print("📦 ffmpeg no encontrado, instalando...")
         try:
-            subprocess.run(["apt-get", "update", "-y"], check=True)
-            subprocess.run(["apt-get", "install", "-y", "ffmpeg"], check=True)
+            subprocess.run(["apt-get", "update", "-y"], capture_output=True, check=True)
+            subprocess.run(
+                ["apt-get", "install", "-y", "ffmpeg"],
+                capture_output=True, check=True  # capture_output silencia el output de apt-get
+            )
             print("✅ ffmpeg instalado correctamente.")
         except Exception as e:
             print(f"❌ No se pudo instalar ffmpeg: {e}")
-            print("⚠️ El bot funcionará pero los comandos que usan ffmpeg fallarán.")
+            sys.exit(1)
     time.sleep(10)  # Evita conflicto 409 en redeploys (espera a que la instancia anterior muera)
     print("🤖 Bot iniciado correctamente.")
     while True:
