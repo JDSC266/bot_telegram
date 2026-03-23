@@ -651,7 +651,7 @@ def detener_bot(sig, frame):
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, detener_bot)
     signal.signal(signal.SIGTERM, detener_bot)
-    time.sleep(3)  # Evita conflicto 409 en redeploys (espera a que la instancia anterior muera)
+    time.sleep(10)  # Evita conflicto 409 en redeploys (espera a que la instancia anterior muera)
     print("🤖 Bot iniciado correctamente.")
     while True:
         try:
