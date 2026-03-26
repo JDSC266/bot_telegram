@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 import telebot
 from telebot import types
 import os
@@ -14,7 +11,7 @@ from dotenv import load_dotenv
 
 # ── Configuración ──────────────────────────────────────────────────────────────
 load_dotenv()
-TOKEN = os.getenv("BOT_TOKEN")
+TOKEN = os.getenv("BOT_TOKEN_1")
 if not TOKEN:
     sys.exit("❌ Error: define BOT_TOKEN en las variables de entorno")
 
