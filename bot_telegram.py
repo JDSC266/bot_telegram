@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 load_dotenv()
 TOKEN = os.getenv("BOT_TOKEN_1")
 if not TOKEN:
-    sys.exit("❌ Error: define BOT_TOKEN en las variables de entorno")
+    sys.exit("❌ Error: define BOT_TOKEN_1 en las variables de entorno")
 
 bot = telebot.TeleBot(TOKEN)
 
